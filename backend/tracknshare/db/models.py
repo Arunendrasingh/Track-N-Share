@@ -4,6 +4,7 @@ from .database import Base
 
 class User(Base):
     __tablename__ = "users"
+    
     id = Column(Integer, primary_key=True, index=True)
     first_name = Column(String, nullable=True)
     last_name = Column(String, nullable=True)
@@ -15,12 +16,16 @@ class User(Base):
     # notifications = relationship("Notification", back_populates="user")
     # groups = relationship("GroupMember", back_populates="user")
 
-# class Expense(Base):
-#     id = Column(Integer, primary_key=True, index=True)
-#     description = Column(String, index=True)
-#     amount = Column(Float, index=True)
-#     date = Column(Date)
-#     paid_by_id = Column(Integer, ForeignKey('user.id'))
+class Expense(Base):
+    __tablename__ = "expenses"
+
+    id = Column(Integer, primary_key=True, index=True)
+    description = Column(String, index=True)
+    amount = Column(Float, index=True)
+    date = Column(Date)
+    paid_by_id = Column(Integer)
+    paid_by = Column(String, nullable=True)
+    # paid_by_id = Column(Integer, ForeignKey('user.id'))
 #     paid_by = relationship("User", back_populates="expenses")
 #     group_id = Column(Integer, ForeignKey('group.id'))
 #     group = relationship("Group", back_populates="expenses")

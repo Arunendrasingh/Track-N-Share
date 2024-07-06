@@ -12,7 +12,9 @@ def create(db: Session, *, obj_in: ExpenseCreate):
     db_obj = Expense(
         description=obj_in.description,
         amount=obj_in.amount,
-        date=obj_in.date
+        date=obj_in.date,
+        paid_by_id = obj_in.paid_by_id,
+        paid_by = obj_in.paid_by
     )
     db.add(db_obj)
     db.commit()

@@ -25,6 +25,7 @@ class Expense(Base):
     date = Column(Date)
     paid_by_id = Column(Integer)
     paid_by = Column(String, nullable=True)
+    # TODO: Add a column of `isUpdated` to track if a Expense is being updated...
     # paid_by_id = Column(Integer, ForeignKey('user.id'))
 #     paid_by = relationship("User", back_populates="expenses")
 #     group_id = Column(Integer, ForeignKey('group.id'))

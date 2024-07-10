@@ -12,7 +12,7 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean, default=True)
     is_superuser = Column(Boolean, default=False)
-    # expenses = relationship("Expense", back_populates="paid_by")
+    expenses = relationship("Expense", back_populates="paid_by")
     # notifications = relationship("Notification", back_populates="user")
     # groups = relationship("GroupMember", back_populates="user")
 
@@ -23,11 +23,10 @@ class Expense(Base):
     description = Column(String, index=True)
     amount = Column(Float, index=True)
     date = Column(Date)
-    paid_by_id = Column(Integer)
-    paid_by = Column(String, nullable=True)
-    # TODO: Add a column of `isUpdated` to track if a Expense is being updated...
-    # paid_by_id = Column(Integer, ForeignKey('user.id'))
-#     paid_by = relationship("User", back_populates="expenses")
+    is_updated = Column(Boolean, default=False)
+    edited_by = Column(String, nullable=True)
+    paid_by_id = Column(Integer, ForeignKey('users.id'))
+    paid_by = relationship("User", back_populates="expenses")
 #     group_id = Column(Integer, ForeignKey('group.id'))
 #     group = relationship("Group", back_populates="expenses")
 

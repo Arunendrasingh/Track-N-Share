@@ -1,7 +1,5 @@
 from fastapi import APIRouter
-from api.endpoints import expenses, users
-
-
+from tracknshare.api.endpoints import expenses, users
 
 # Router
 api_router = APIRouter()

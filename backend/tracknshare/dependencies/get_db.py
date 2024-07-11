@@ -1,4 +1,5 @@
-from db.database import SessionLocal
+from tracknshare.db.database import SessionLocal
+
 
 # Dependency
 def get_db():

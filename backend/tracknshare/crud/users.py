@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from tracknshare.schemas.users import CreateUser
-from tracknshare.db.models import User
+from schemas.users import CreateUser
+from db.models import User
 from passlib.context import CryptContext
 from sqlalchemy import select
 
@@ -10,6 +10,9 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def get_password_hash(password):
     return pwd_context.hash(password)
+
+def verify_password(plain_password, hashed_password):
+    return pwd_context.verify(plain_password, hashed_password)
 
 
 def get_user(db: Session, email: str):
@@ -28,3 +31,16 @@ def create(db: Session, *, obj_in: CreateUser):
     db.commit()
     db.refresh(user_obj)
     return user_obj
+
+
+def authenticate(db: Session, username: str, password: str):
+    user = get_user(db, email=username)
+    if not user:
+        return False
+    
+    if not verify_password(password, user.hashed_password):
+        return False
+    
+    return user
+    
+

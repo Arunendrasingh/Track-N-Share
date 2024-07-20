@@ -105,3 +105,6 @@ coverage.xml
 .vscode/
 .project
 .pydevproject
+
+# HTTP files
+*.rest

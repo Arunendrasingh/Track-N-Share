@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from tracknshare.db.models import Expense
-from tracknshare.schemas.expenses import ExpenseCreate, ExpenseUpdate
+from db.models import Expense
+from schemas.expenses import ExpenseCreate, ExpenseUpdate
 
 
 def get_expense(db: Session, expense_id: int):

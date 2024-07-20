@@ -1,8 +1,17 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv
+from fastapi.security import OAuth2PasswordBearer
 
 from core.config import settings
 from api.api_v1 import api_router
+
+# to get a string like this run:
+# openssl rand -hex 32
+SECRET_KEY = "23b6acab8ce1648876e6be89fe038f5dbac8adf09886dbe12d7edd8b0d2d82c0"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+
 
 app = FastAPI(
     title="TrackNShare",

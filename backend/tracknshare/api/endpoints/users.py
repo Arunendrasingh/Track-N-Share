@@ -14,7 +14,7 @@ router = APIRouter()
 
 
 @router.post("/", response_model=ResponseUser, status_code=status.HTTP_201_CREATED)
-def signup(user_to_add: Annotated[CreateUser, Body(embed=True)], db: Session = Depends(get_db)):
+def signup(user_to_add: CreateUser, db: Session = Depends(get_db)):
 
     # Check for existing user
     user = users.get_user(db, email=user_to_add.email)

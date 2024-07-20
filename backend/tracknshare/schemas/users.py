@@ -1,5 +1,16 @@
 from pydantic import BaseModel, field_validator, model_validator, EmailStr, Field
 
+# Token Models
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: str | None = None
+
+
+
 
 class User(BaseModel):
     email: EmailStr
@@ -22,6 +33,11 @@ class CreateUser(User):
 
         if len(self.password1) < 8:
             raise ValueError("Your password must be at least 8 characters long.")
+        
+
+
+class UserInDb(User):
+    hashed_password: str
 
 
 class ResponseUser(User):

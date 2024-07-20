@@ -1,4 +1,4 @@
-from tracknshare.db.database import SessionLocal
+from db.database import SessionLocal
 
 
 # Dependency

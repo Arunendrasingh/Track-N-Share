@@ -37,7 +37,7 @@ class CreateUser(User):
 
 
 class UserInDb(User):
-    hashed_password: str
+    id: int
 
 
 class ResponseUser(User):

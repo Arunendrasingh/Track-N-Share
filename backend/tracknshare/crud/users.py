@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from schemas.users import CreateUser
-from db.models import User
+from models.models import User
 from passlib.context import CryptContext
 from sqlalchemy import select
 
@@ -12,6 +12,8 @@ def get_password_hash(password):
     return pwd_context.hash(password)
 
 def verify_password(plain_password, hashed_password):
+    print("simple Password: ", hashed_password)
+    print("Hashed Password: ", plain_password)
     return pwd_context.verify(plain_password, hashed_password)
 
 
@@ -38,7 +40,7 @@ def authenticate(db: Session, username: str, password: str):
     if not user:
         return False
     
-    if not verify_password(password, user.hashed_password):
+    if not verify_password(password.strip(), user.hashed_password):
         return False
     
     return user

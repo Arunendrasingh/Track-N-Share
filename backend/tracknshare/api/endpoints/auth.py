@@ -14,14 +14,14 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/token")
 
 @router.post("/token", response_model=Token)
 def login_for_access_token(db: Session = Depends(get_db), form_data: OAuth2PasswordRequestForm = Depends()):
-    user = users.authenticate(db, username=form_data.username, password=form_data.password)
+    user = users.authenticate(db, username=form_data.username.strip(), password=form_data.password.strip())
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
+
     print(security.ACCESS_TOKEN_EXPIRE_MINUTES, type(security.ACCESS_TOKEN_EXPIRE_MINUTES).__name__)
     access_token_expires = timedelta(minutes=security.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = security.create_access_token(

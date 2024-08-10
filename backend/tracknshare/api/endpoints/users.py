@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends, status, Body, HTTPException
-from typing import Annotated
 from sqlalchemy.orm import Session
 
 from dependencies.get_db import get_db
@@ -28,6 +27,5 @@ def signup(user_to_add: CreateUser, db: Session = Depends(get_db)):
 
 
 
-# TODO: Get single expense for single user with user id
-
-# Add a endpoint for updating a expense
+# TODO: Add other Method like, Profile, UserUpdate, ProfileUpdate.
+# TODO: Add Method to increase the total expense, every-time a user add new expense.

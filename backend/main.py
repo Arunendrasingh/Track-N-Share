@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv
-from fastapi.security import OAuth2PasswordBearer
 
 from core.config import settings
 from api.api_v1 import api_router

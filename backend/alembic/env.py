@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 
 import os
 from alembic import context
-from tracknshare.db.database import Base
-from backend.tracknshare.models.models import User
+from db.database import Base
+from models.models import User
 
 # Load environment variables from .env file
 load_dotenv()

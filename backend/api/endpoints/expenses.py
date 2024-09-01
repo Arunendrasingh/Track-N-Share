@@ -26,3 +26,4 @@ def add_expense(expense_to_add: ExpenseCreate, db: Session = Depends(get_db.get_
 # TODO: Integrate get_current user log the expense only for specific USER
 
 # TODO: Add a endpoint for updating a expense
+# TODO: Update the expense in UserProfile when he added the expense,

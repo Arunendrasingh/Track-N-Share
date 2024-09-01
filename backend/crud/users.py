@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from schemas.users import CreateUser
-from models.models import User
+from models.user import User
 from passlib.context import CryptContext
 from sqlalchemy import select
 

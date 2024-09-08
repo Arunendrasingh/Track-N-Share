@@ -6,23 +6,17 @@ from datetime import datetime
 class ExpenseBase(BaseModel):
     description: str
     amount: float
-    date: datetime | None = None
-    paid_by_id: int
-    paid_by: str | None = None
+
+    class Config:
+        orm_mode = True
 
 
 class ExpenseDisplay(BaseModel):
     id: int
-    description: str
-    amount: float
-    date: datetime | None = None
 
 
 class ExpenseCreate(ExpenseBase):
-    # description: str
-    # amount: float
-    # date: str
-    pass
+    date: str
 
 
 class ExpenseUpdate(ExpenseBase):

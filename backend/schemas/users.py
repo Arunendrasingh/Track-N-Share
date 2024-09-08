@@ -5,6 +5,9 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
+    class Config:
+        orm_mode = True
+
 
 class TokenData(BaseModel):
     username: str | None = None
@@ -16,6 +19,9 @@ class User(BaseModel):
     email: EmailStr
     first_name: str | None = None
     last_name: str | None = None
+
+    class Config:
+        orm_mode = True
 
 
 class CreateUser(User):
